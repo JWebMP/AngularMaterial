@@ -18,7 +18,11 @@ import java.util.Set;
 
 @Getter
 @Setter
-@NgImportReference(value = "MatFormFieldModule", reference = "@angular/material/form-field")
+@NgImportReference(value = "MatFormField", reference = "@angular/material/form-field")
+@NgImportReference(value = "MatLabel", reference = "@angular/material/form-field")
+@NgImportReference(value = "MatInput", reference = "@angular/material/input")
+@NgImportReference(value = "FormsModule", reference = "@angular/forms")
+
 public class MatFormField extends Div<MatFormFieldChildren, NoAttributes, GlobalFeatures, GlobalEvents, MatFormField> implements
                                                                                                                       INgComponent<MatFormField>
 {
@@ -36,15 +40,18 @@ public class MatFormField extends Div<MatFormFieldChildren, NoAttributes, Global
     }
 
     @Override
-    public Set<String> importModules()
+    public Set<String> moduleImports()
     {
-        Set<String> strings = INgComponent.super.importModules();
-        strings.add("MatFormFieldModule");
+        Set<String> strings = INgComponent.super.moduleImports();
+        strings.add("MatFormField");
+        strings.add("MatLabel");
+        strings.add("MatInput");
+        strings.add("FormsModule");
         return strings;
     }
 
     @Override
-    public void init()
+    protected void init()
     {
         if (label != null)
         {
@@ -82,6 +89,30 @@ public class MatFormField extends Div<MatFormFieldChildren, NoAttributes, Global
     public MatFormField addSuffix(MatFormFieldChildren component)
     {
         suffixes.add(component);
+        return this;
+    }
+
+    public MatFormField setLabel(String label)
+    {
+        this.label = new MatLabel(label);
+        return this;
+    }
+
+    public MatFormField setLabel(MatLabel label)
+    {
+        this.label = label;
+        return this;
+    }
+
+    public MatFormField setHint(String hint)
+    {
+        this.hint = new MatHint().setText(hint);
+        return this;
+    }
+
+    public MatFormField setHint(MatHint hint)
+    {
+        this.hint = hint;
         return this;
     }
 }

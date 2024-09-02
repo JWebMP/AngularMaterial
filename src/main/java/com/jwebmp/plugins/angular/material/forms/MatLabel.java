@@ -9,4 +9,10 @@ public class MatLabel extends DivSimple<MatLabel> implements MatFormFieldChildre
     {
         setTag("mat-label");
     }
+
+    public MatLabel(String text)
+    {
+        this();
+        setText(text);
+    }
 }

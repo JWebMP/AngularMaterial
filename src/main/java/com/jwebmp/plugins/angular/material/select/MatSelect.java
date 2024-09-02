@@ -45,7 +45,7 @@ public class MatSelect extends Div<MatSelectChildren, NoAttributes, GlobalFeatur
     }
 
     @Override
-    public void init()
+    protected void init()
     {
         if (disableOptionCentering != null)
         {
@@ -87,9 +87,9 @@ public class MatSelect extends Div<MatSelectChildren, NoAttributes, GlobalFeatur
     }
 
     @Override
-    public Set<String> importModules()
+    public Set<String> moduleImports()
     {
-        Set<String> strings = INgComponent.super.importModules();
+        Set<String> strings = INgComponent.super.moduleImports();
         strings.add("MatSelectModule");
         return strings;
     }

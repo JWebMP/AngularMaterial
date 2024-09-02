@@ -26,7 +26,7 @@ public class MatTableColumn extends DivSimple<MatTableColumn> implements TableCh
     }
 
     @Override
-    public void init()
+    protected void init()
     {
         if (!Strings.isNullOrEmpty(columnDef))
         {

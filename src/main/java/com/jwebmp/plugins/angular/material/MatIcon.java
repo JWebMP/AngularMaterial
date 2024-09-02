@@ -23,16 +23,16 @@ public class MatIcon extends DivSimple<MatIcon> implements INgComponent<MatIcon>
     }
 
     @Override
-    public void init()
+    protected void init()
     {
         setText(icon);
         super.init();
     }
 
     @Override
-    public Set<String> importModules()
+    public Set<String> moduleImports()
     {
-        Set<String> strings = INgComponent.super.importModules();
+        Set<String> strings = INgComponent.super.moduleImports();
         strings.add("MatIconModule");
         return strings;
     }

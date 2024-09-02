@@ -23,7 +23,7 @@ public class MatOption extends DivSimple<MatOption> implements MatSelectChildren
     }
 
     @Override
-    public void init()
+    protected void init()
     {
         if (!Strings.isNullOrEmpty(value))
         {

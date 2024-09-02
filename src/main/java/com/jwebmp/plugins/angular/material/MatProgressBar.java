@@ -28,16 +28,16 @@ public class MatProgressBar extends DivSimple<MatProgressBar> implements INgComp
     }
 
     @Override
-    public Set<String> importModules()
+    public Set<String> moduleImports()
     {
-        Set<String> strings = INgComponent.super.importModules();
+        Set<String> strings = INgComponent.super.moduleImports();
         strings.add("MatProgressBarModule");
         return strings;
     }
 
 
     @Override
-    public void init()
+    protected void init()
     {
         if (!Strings.isNullOrEmpty(mode))
         {

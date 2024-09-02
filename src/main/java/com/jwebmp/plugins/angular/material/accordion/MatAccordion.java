@@ -34,7 +34,7 @@ public class MatAccordion extends Div<MatAccordionChildren, NoAttributes, Global
     }
 
     @Override
-    public void init()
+    protected void init()
     {
         if (togglePosition != null)
         {
@@ -56,9 +56,9 @@ public class MatAccordion extends Div<MatAccordionChildren, NoAttributes, Global
     }
 
     @Override
-    public Set<String> importModules()
+    public Set<String> moduleImports()
     {
-        Set<String> strings = INgComponent.super.importModules();
+        Set<String> strings = INgComponent.super.moduleImports();
         strings.add("MatAccordion");
         strings.add("MatExpansionModule");
         return strings;

@@ -1,14 +1,14 @@
 package com.jwebmp.plugins.angular.material.dialog;
 
 import com.google.common.base.Strings;
-import com.jwebmp.core.base.angular.client.annotations.boot.NgBootImportProvider;
-import com.jwebmp.core.base.angular.client.annotations.boot.NgBootImportReference;
 import com.jwebmp.core.base.angular.client.annotations.constructors.NgConstructorParameter;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.annotations.structures.NgMethod;
+import com.jwebmp.core.base.angular.client.services.interfaces.AnnotationUtils;
 import com.jwebmp.core.base.angular.client.services.interfaces.INgComponent;
 import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.core.base.html.H1;
+import com.jwebmp.core.base.interfaces.IComponentHierarchyBase;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,8 +35,6 @@ import static com.jwebmp.core.base.angular.client.services.interfaces.Annotation
 @NgImportReference(value = "MAT_DIALOG_DATA", reference = "@angular/material/dialog")
 
 
-@NgBootImportReference(value = "MatDialogRef", reference = "@angular/material/dialog")
-@NgBootImportReference(value = "MAT_DIALOG_DATA", reference = "@angular/material/dialog")
 @NgMethod("""
             closeDialog(returnedData : any)
                 {
@@ -44,16 +42,8 @@ import static com.jwebmp.core.base.angular.client.services.interfaces.Annotation
                 }
         """)
 
-@NgBootImportProvider("""
-        {
-               provide: MAT_DIALOG_DATA,
-               useValue: {}
-             }""")
-@NgBootImportProvider("""
-        {
-               provide: MatDialogRef,
-               useValue: {}
-             }""")
+@NgImportReference(value = "MatDialogTitle", reference = "@angular/material/dialog")
+@NgImportReference(value = "MatDialogContent", reference = "@angular/material/dialog")
 public class MatDialog extends DivSimple<MatDialog> implements INgComponent<MatDialog>
 {
     private H1<?> title;
@@ -61,7 +51,7 @@ public class MatDialog extends DivSimple<MatDialog> implements INgComponent<MatD
     private MatDialogActions footer;
 
     @Override
-    public void init()
+    protected void init()
     {
         if (title != null)
         {
@@ -86,10 +76,11 @@ public class MatDialog extends DivSimple<MatDialog> implements INgComponent<MatD
     }
 
     @Override
-    public Set<String> importModules()
+    public Set<String> moduleImports()
     {
-        Set<String> strings = INgComponent.super.importModules();
-        strings.add("MatDialogModule");
+        Set<String> strings = INgComponent.super.moduleImports();
+        strings.add("MatDialogTitle");
+        strings.add("MatDialogContent");
         return strings;
     }
 
@@ -124,19 +115,29 @@ public class MatDialog extends DivSimple<MatDialog> implements INgComponent<MatD
                   }
             """;
 
-    public String renderOpenMethod(String width, String height, String dataBinding, String performWithResult)
+    public String renderOpenMethod(IComponentHierarchyBase<?, ?> component, String width, String height, String dataBinding, String performWithResult)
     {
+
+        String format = null;
         if (Strings.isNullOrEmpty(assignResultString))
         {
-            String format = String.format(openMethodString, getTsFilename(getClass()), width, height, Strings.isNullOrEmpty(dataBinding) ? "{}" : dataBinding, "");
-            return format;
+            format = String.format(openMethodString, getTsFilename(getClass()), width, height, Strings.isNullOrEmpty(dataBinding) ? "{}" : dataBinding, "");
+            component.addConfiguration(AnnotationUtils.getNgMethod(format));
         }
         else
         {
             String assign = String.format(assignResultString, performWithResult);
-            String format = String.format(openMethodString, getTsFilename(getClass()), width, height, Strings.isNullOrEmpty(dataBinding) ? "{}" : dataBinding, assign);
-            return format;
+            format = String.format(openMethodString, getTsFilename(getClass()), width, height, Strings.isNullOrEmpty(dataBinding) ? "{}" : dataBinding, assign);
+
         }
+        if (component != null)
+        {
+            component.addConfiguration(AnnotationUtils.getNgImportReference("MatDialogModule", "@angular/material/dialog"));
+            component.addConfiguration(AnnotationUtils.getNgImportModule("MatDialogModule"));
+            component.addConfiguration(AnnotationUtils.getNgConstructorParameter("public dialog:MatDialog"));
+            component.addConfiguration(AnnotationUtils.getNgMethod(format));
+        }
+        return format;
     }
 
     private static final String assignResultString = """

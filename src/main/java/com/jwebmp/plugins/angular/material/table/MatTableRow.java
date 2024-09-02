@@ -9,6 +9,6 @@ public class MatTableRow extends TableRow<MatTableRow>
     public MatTableRow()
     {
         addAttribute("mat-row", "");
-        addAttribute("*matRowDef", "let row; columns: displayedColumns;");
+        addAttribute("*matRowDef", "let row; columns: displayedColumns;let index = dataIndex;let even = even; ");
     }
 }

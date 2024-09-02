@@ -17,9 +17,9 @@ public class MatButton extends DivSimple<MatButton> implements INgComponent<MatB
     }
 
     @Override
-    public Set<String> importModules()
+    public Set<String> moduleImports()
     {
-        Set<String> strings = INgComponent.super.importModules();
+        Set<String> strings = INgComponent.super.moduleImports();
         strings.add("MatButtonModule");
         return strings;
     }

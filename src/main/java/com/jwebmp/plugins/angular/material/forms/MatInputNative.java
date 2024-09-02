@@ -6,7 +6,7 @@ public class MatInputNative extends MatInput<MatInputNative> implements MatInput
 {
 
     @Override
-    public void init()
+    protected void init()
     {
         removeAttribute("matInput ");
         addAttribute("matNativeControl", "");

@@ -32,7 +32,7 @@ public class MatCheckbox extends DivSimple<MatCheckbox> implements INgComponent<
     }
 
     @Override
-    public void init()
+    protected void init()
     {
         if (checked != null)
         {
@@ -70,9 +70,9 @@ public class MatCheckbox extends DivSimple<MatCheckbox> implements INgComponent<
     }
 
     @Override
-    public Set<String> importModules()
+    public Set<String> moduleImports()
     {
-        Set<String> strings = INgComponent.super.importModules();
+        Set<String> strings = INgComponent.super.moduleImports();
         strings.add("MatCheckboxModule");
         return strings;
     }

@@ -33,7 +33,7 @@ public class MatAccordionPanel extends Div<MatAccordionPanelChildren, NoAttribut
     }
 
     @Override
-    public void init()
+    protected void init()
     {
         if (disabled != null)
         {
@@ -56,9 +56,9 @@ public class MatAccordionPanel extends Div<MatAccordionPanelChildren, NoAttribut
     }
 
     @Override
-    public Set<String> importModules()
+    public Set<String> moduleImports()
     {
-        Set<String> strings = INgComponent.super.importModules();
+        Set<String> strings = INgComponent.super.moduleImports();
         strings.add("MatExpansionModule");
         return strings;
     }

@@ -20,15 +20,15 @@ public class MatInput<J extends MatInput<J>> extends Input<InputAttributes, J> i
     }
 
     @Override
-    public void init()
+    protected void init()
     {
         super.init();
     }
 
     @Override
-    public Set<String> importModules()
+    public Set<String> moduleImports()
     {
-        Set<String> strings = INgComponent.super.importModules();
+        Set<String> strings = INgComponent.super.moduleImports();
         strings.add("MatInputModule");
         return strings;
     }
