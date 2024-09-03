@@ -11,6 +11,7 @@ import lombok.Setter;
 import java.util.Set;
 
 @NgImportReference(value = "MatCheckboxModule", reference = "@angular/material/checkbox")
+@NgImportReference(value = "MatCheckboxChange", reference = "@angular/material/checkbox")
 @Getter
 @Setter
 public class MatCheckbox extends DivSimple<MatCheckbox> implements INgComponent<MatCheckbox>, MatFormFieldChildren,

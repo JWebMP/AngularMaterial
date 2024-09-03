@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.guicedee.client.IGuiceContext;
-import com.jwebmp.core.base.angular.client.annotations.boot.NgBootImportReference;
 import com.jwebmp.core.base.angular.client.annotations.boot.NgBootModuleImport;
 import com.jwebmp.core.base.angular.client.annotations.components.NgInput;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
@@ -24,9 +23,7 @@ import static com.guicedee.guicedinjection.interfaces.ObjectBinderKeys.JSONObjec
 @NgImportReference(value = "MatTableModule", reference = "@angular/material/table")
 @NgImportReference(value = "MatTable", reference = "@angular/material/table")
 @NgImportReference(value = "MatSort", reference = "@angular/material/sort")
-@NgBootImportReference(value = "MatSort", reference = "@angular/material/sort")
 @NgImportReference(value = "MatPaginator", reference = "@angular/material/paginator")
-@NgBootImportReference(value = "MatPaginator", reference = "@angular/material/paginator")
 @NgBootModuleImport("MatPaginator")
 //@NgImportReference(value = "MatPaginatorModule", reference = "@angular/material/paginator")
 @NgImportReference(value = "MatSortModule", reference = "@angular/material/sort")

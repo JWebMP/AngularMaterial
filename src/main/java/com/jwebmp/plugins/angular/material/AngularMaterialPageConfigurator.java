@@ -19,8 +19,6 @@ package com.jwebmp.plugins.angular.material;
 
 import com.jwebmp.core.Page;
 import com.jwebmp.core.base.angular.client.annotations.angularconfig.NgStyleSheet;
-import com.jwebmp.core.base.angular.client.annotations.boot.NgBootImportReference;
-import com.jwebmp.core.base.angular.client.annotations.boot.NgBootModuleImport;
 import com.jwebmp.core.base.angular.client.annotations.typescript.TsDependency;
 import com.jwebmp.core.base.angular.services.compiler.JWebMPTypeScriptCompiler;
 import com.jwebmp.core.base.html.Link;
@@ -67,8 +65,8 @@ import java.util.Set;
 @TsDependency(value = "@angular/material", version = "^18.0.6")
 @TsDependency(value = "@angular/animations", version = "^18.0.1")
 @NgStyleSheet(value = "@angular/material/prebuilt-themes/azure-blue.css")
-@NgBootImportReference(value = "BrowserAnimationsModule", reference = "@angular/platform-browser/animations")
-@NgBootModuleImport("BrowserAnimationsModule")
+//@NgBootImportReference(value = "BrowserAnimationsModule", reference = "@angular/platform-browser/animations")
+//@NgBootModuleImport("BrowserAnimationsModule")
 public class AngularMaterialPageConfigurator
         implements IPageConfigurator<AngularMaterialPageConfigurator>
 {

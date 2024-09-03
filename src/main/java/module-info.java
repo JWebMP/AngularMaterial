@@ -1,6 +1,4 @@
 import com.guicedee.guicedinjection.interfaces.IGuiceScanModuleInclusions;
-import com.jwebmp.core.services.IPageConfigurator;
-import com.jwebmp.plugins.angular.material.AngularMaterialPageConfigurator;
 import com.jwebmp.plugins.angular.material.implementations.AngularMaterialScanModule;
 
 module com.jwebmp.plugins.angular.material {
@@ -14,6 +12,8 @@ module com.jwebmp.plugins.angular.material {
     exports com.jwebmp.plugins.angular.material.accordion.interfaces;
     exports com.jwebmp.plugins.angular.material.select;
     exports com.jwebmp.plugins.angular.material.checkbox;
+    exports com.jwebmp.plugins.angular.material.chips;
+    exports com.jwebmp.plugins.angular.material.autocomplete;
 
     requires com.jwebmp.core;
     requires static lombok;
@@ -21,7 +21,7 @@ module com.jwebmp.plugins.angular.material {
     requires com.jwebmp.core.angular;
 
     provides IGuiceScanModuleInclusions with AngularMaterialScanModule;
-    provides IPageConfigurator with AngularMaterialPageConfigurator;
+    //provides IPageConfigurator with AngularMaterialPageConfigurator;
 
     opens com.jwebmp.plugins.angular.material to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
     opens com.jwebmp.plugins.angular.material.implementations to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
@@ -32,5 +32,7 @@ module com.jwebmp.plugins.angular.material {
     opens com.jwebmp.plugins.angular.material.accordion to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
     opens com.jwebmp.plugins.angular.material.select to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
     opens com.jwebmp.plugins.angular.material.checkbox to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
+    opens com.jwebmp.plugins.angular.material.chips to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
+    opens com.jwebmp.plugins.angular.material.autocomplete to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
 
 }
