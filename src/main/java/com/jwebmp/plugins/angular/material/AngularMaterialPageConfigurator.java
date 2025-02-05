@@ -42,24 +42,24 @@ import java.util.Set;
         "UnusedReturnValue",
         "unused"})
 @PluginInformation(pluginName = "Angular Material",
-                   pluginDescription = "Angular Material Web Components",
-                   pluginUniqueName = "angular",
-                   pluginVersion = "18.0.6",
-                   pluginDependancyUniqueIDs = "angular-material",
-                   pluginCategories = "angular,material, ui",
-                   pluginGitUrl = "https://github.com/JWebMP/AngularMaterial",
-                   pluginSourceUrl = "https://material.angular.io",
-                   pluginWikiUrl = "https://github.com/JWebMP/AngularMaterial/wiki",
-                   pluginOriginalHomepage = "https://material.angular.io",
-                   pluginDownloadUrl = "https://angularjs.org/",
-                   pluginIconImageUrl = "https://angularjs.org/img/AngularJS-large.png",
-                   pluginIconUrl = "https://angularjs.org/img/AngularJS-large.png",
-                   pluginLastUpdatedDate = "2024/07/03",
-                   pluginStatus = PluginStatus.Planned,
-                   pluginGroupId = "com.jwebmp.plugins.angular.material",
-                   pluginArtifactId = "angular-material",
-                   pluginModuleName = "com.jwebmp.core.angular.angular",
-                   pluginSubtitle = ""
+        pluginDescription = "Angular Material Web Components",
+        pluginUniqueName = "angular",
+        pluginVersion = "18.0.6",
+        pluginDependancyUniqueIDs = "angular-material",
+        pluginCategories = "angular,material, ui",
+        pluginGitUrl = "https://github.com/JWebMP/AngularMaterial",
+        pluginSourceUrl = "https://material.angular.io",
+        pluginWikiUrl = "https://github.com/JWebMP/AngularMaterial/wiki",
+        pluginOriginalHomepage = "https://material.angular.io",
+        pluginDownloadUrl = "https://angularjs.org/",
+        pluginIconImageUrl = "https://angularjs.org/img/AngularJS-large.png",
+        pluginIconUrl = "https://angularjs.org/img/AngularJS-large.png",
+        pluginLastUpdatedDate = "2024/07/03",
+        pluginStatus = PluginStatus.Planned,
+        pluginGroupId = "com.jwebmp.plugins.angular.material",
+        pluginArtifactId = "angular-material",
+        pluginModuleName = "com.jwebmp.core.angular.angular",
+        pluginSubtitle = ""
 )
 @Log
 @TsDependency(value = "@angular/material", version = "^18.0.6")
@@ -68,8 +68,7 @@ import java.util.Set;
 //@NgBootImportReference(value = "BrowserAnimationsModule", reference = "@angular/platform-browser/animations")
 //@NgBootModuleImport("BrowserAnimationsModule")
 public class AngularMaterialPageConfigurator
-        implements IPageConfigurator<AngularMaterialPageConfigurator>
-{
+        implements IPageConfigurator<AngularMaterialPageConfigurator> {
     /**
      * If this configurator is enabled
      */
@@ -85,8 +84,7 @@ public class AngularMaterialPageConfigurator
     /**
      * Configures the angular page
      */
-    public AngularMaterialPageConfigurator()
-    {
+    public AngularMaterialPageConfigurator() {
         //No config required
     }
 
@@ -97,8 +95,7 @@ public class AngularMaterialPageConfigurator
      *
      * @return the enabled (type boolean) of this AngularAnimatedChangePageConfigurator object.
      */
-    public static boolean isEnabled()
-    {
+    public static boolean isEnabled() {
         return AngularMaterialPageConfigurator.enabled;
     }
 
@@ -109,8 +106,7 @@ public class AngularMaterialPageConfigurator
      *
      * @param mustEnable the enabled of this AngularAnimatedChangePageConfigurator object.
      */
-    public static void setEnabled(boolean mustEnable)
-    {
+    public static void setEnabled(boolean mustEnable) {
         AngularMaterialPageConfigurator.enabled = mustEnable;
     }
 
@@ -119,8 +115,7 @@ public class AngularMaterialPageConfigurator
      *
      * @return If it is required to render
      */
-    public static boolean isRequired()
-    {
+    public static boolean isRequired() {
         return AngularMaterialPageConfigurator.required;
     }
 
@@ -129,33 +124,29 @@ public class AngularMaterialPageConfigurator
      *
      * @param required If it is required to render
      */
-    public static void setRequired(boolean required)
-    {
+    public static void setRequired(boolean required) {
         AngularMaterialPageConfigurator.required = required;
     }
 
     @NotNull
     @Override
-    public IPage<?> configure(IPage<?> page)
-    {
+    public IPage<?> configure(IPage<?> page) {
         ((Page) page).getHead()
-                     .add(new Link<>("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap").setTag("link")
-                                                                                                                     .addAttribute("rel", "stylesheet"));
+                .add(new Link<>("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap").setTag("link")
+                        .addAttribute("rel", "stylesheet"));
         ((Page) page).getHead()
-                     .add(new Link<>("https://fonts.googleapis.com/icon?family=Material+Icons").setTag("link")
-                                                                                               .addAttribute("rel", "stylesheet"));
+                .add(new Link<>("https://fonts.googleapis.com/icon?family=Material+Icons").setTag("link")
+                        .addAttribute("rel", "stylesheet"));
         return page;
     }
 
     @Override
-    public boolean enabled()
-    {
+    public boolean enabled() {
         return AngularMaterialPageConfigurator.enabled;
     }
 
     @Override
-    public Integer sortOrder()
-    {
+    public Integer sortOrder() {
         return Integer.MAX_VALUE - 100;
     }
 
