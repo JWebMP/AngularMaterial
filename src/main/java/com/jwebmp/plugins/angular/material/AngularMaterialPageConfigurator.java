@@ -62,13 +62,14 @@ import java.util.Set;
         pluginSubtitle = ""
 )
 @Log
-@TsDependency(value = "@angular/material", version = "^18.0.6")
+@TsDependency(value = "@angular/material", version = "^19.1.4")
 @TsDependency(value = "@angular/animations", version = "^18.0.1")
 @NgStyleSheet(value = "@angular/material/prebuilt-themes/azure-blue.css")
 //@NgBootImportReference(value = "BrowserAnimationsModule", reference = "@angular/platform-browser/animations")
 //@NgBootModuleImport("BrowserAnimationsModule")
 public class AngularMaterialPageConfigurator
-        implements IPageConfigurator<AngularMaterialPageConfigurator> {
+        implements IPageConfigurator<AngularMaterialPageConfigurator>
+{
     /**
      * If this configurator is enabled
      */
@@ -84,7 +85,8 @@ public class AngularMaterialPageConfigurator
     /**
      * Configures the angular page
      */
-    public AngularMaterialPageConfigurator() {
+    public AngularMaterialPageConfigurator()
+    {
         //No config required
     }
 
@@ -95,7 +97,8 @@ public class AngularMaterialPageConfigurator
      *
      * @return the enabled (type boolean) of this AngularAnimatedChangePageConfigurator object.
      */
-    public static boolean isEnabled() {
+    public static boolean isEnabled()
+    {
         return AngularMaterialPageConfigurator.enabled;
     }
 
@@ -106,7 +109,8 @@ public class AngularMaterialPageConfigurator
      *
      * @param mustEnable the enabled of this AngularAnimatedChangePageConfigurator object.
      */
-    public static void setEnabled(boolean mustEnable) {
+    public static void setEnabled(boolean mustEnable)
+    {
         AngularMaterialPageConfigurator.enabled = mustEnable;
     }
 
@@ -115,7 +119,8 @@ public class AngularMaterialPageConfigurator
      *
      * @return If it is required to render
      */
-    public static boolean isRequired() {
+    public static boolean isRequired()
+    {
         return AngularMaterialPageConfigurator.required;
     }
 
@@ -124,13 +129,15 @@ public class AngularMaterialPageConfigurator
      *
      * @param required If it is required to render
      */
-    public static void setRequired(boolean required) {
+    public static void setRequired(boolean required)
+    {
         AngularMaterialPageConfigurator.required = required;
     }
 
     @NotNull
     @Override
-    public IPage<?> configure(IPage<?> page) {
+    public IPage<?> configure(IPage<?> page)
+    {
         ((Page) page).getHead()
                 .add(new Link<>("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap").setTag("link")
                         .addAttribute("rel", "stylesheet"));
@@ -141,12 +148,14 @@ public class AngularMaterialPageConfigurator
     }
 
     @Override
-    public boolean enabled() {
+    public boolean enabled()
+    {
         return AngularMaterialPageConfigurator.enabled;
     }
 
     @Override
-    public Integer sortOrder() {
+    public Integer sortOrder()
+    {
         return Integer.MAX_VALUE - 100;
     }
 
