@@ -63,7 +63,7 @@ import java.util.Set;
 )
 @Log
 @TsDependency(value = "@angular/material", version = "^19.1.4")
-@TsDependency(value = "@angular/animations", version = "^18.0.1")
+@TsDependency(value = "@angular/animations", version = "^19.0.1")
 @NgStyleSheet(value = "@angular/material/prebuilt-themes/azure-blue.css")
 //@NgBootImportReference(value = "BrowserAnimationsModule", reference = "@angular/platform-browser/animations")
 //@NgBootModuleImport("BrowserAnimationsModule")
