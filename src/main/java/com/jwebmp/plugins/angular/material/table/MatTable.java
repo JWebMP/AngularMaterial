@@ -128,8 +128,8 @@ public class MatTable<J extends MatTable<J>> extends Table<J> implements INgComp
         if (paginateEnabled)
         {
             strings.add("""
-                    if (this.dataSource && this.paginator)
-                                    this.dataSource.paginator = this.paginator!;""");
+                    if (this.dataSource && this.paginator())
+                                    this.dataSource.paginator = this.paginator();""");
         }
         return strings;
     }

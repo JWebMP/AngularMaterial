@@ -47,7 +47,7 @@ import static com.jwebmp.core.base.angular.client.services.interfaces.Annotation
 @NgImportReference(value = "MatDialogContent", reference = "@angular/material/dialog")
 @NgImportModule("MatDialogModule")
 @NgImportModule("MatDialogTitle")
-public class MatDialog extends DivSimple<MatDialog> implements INgComponent<MatDialog>
+public class MatDialog<J extends MatDialog<J>> extends DivSimple<J> implements INgComponent<J>
 {
     private H1<?> title;
     private MatDialogContent content;
