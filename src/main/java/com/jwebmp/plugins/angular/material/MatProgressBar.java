@@ -1,6 +1,7 @@
 package com.jwebmp.plugins.angular.material;
 
 import com.google.common.base.Strings;
+import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.services.interfaces.INgComponent;
 import com.jwebmp.core.base.html.DivSimple;
@@ -15,6 +16,7 @@ import java.util.Set;
 @Accessors(chain = true)
 
 @NgImportReference(value = "MatProgressBarModule", reference = "@angular/material/progress-bar")
+@NgImportModule("MatProgressBarModule")
 public class MatProgressBar extends DivSimple<MatProgressBar> implements INgComponent<MatProgressBar>
 {
     private String bufferValue;
@@ -26,15 +28,6 @@ public class MatProgressBar extends DivSimple<MatProgressBar> implements INgComp
     {
         setTag("mat-progress-bar");
     }
-
-    @Override
-    public Set<String> moduleImports()
-    {
-        Set<String> strings = INgComponent.super.moduleImports();
-        strings.add("MatProgressBarModule");
-        return strings;
-    }
-
 
     @Override
     protected void init()

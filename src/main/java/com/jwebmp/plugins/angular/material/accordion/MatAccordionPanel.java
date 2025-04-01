@@ -1,5 +1,6 @@
 package com.jwebmp.plugins.angular.material.accordion;
 
+import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.services.interfaces.INgComponent;
 import com.jwebmp.core.base.html.Div;
@@ -16,9 +17,10 @@ import java.util.Set;
 @Getter
 @Setter
 @NgImportReference(value = "MatExpansionModule", reference = "@angular/material/expansion")
+@NgImportModule("MatExpansionModule")
 public class MatAccordionPanel extends Div<MatAccordionPanelChildren, NoAttributes, GlobalFeatures, GlobalEvents, MatAccordionPanel> implements
-                                                                                                                                     INgComponent<MatAccordionPanel>,
-                                                                                                                                     MatAccordionChildren
+        INgComponent<MatAccordionPanel>,
+        MatAccordionChildren
 {
     private MatAccordionExpansionState expansionState;
 
@@ -54,14 +56,5 @@ public class MatAccordionPanel extends Div<MatAccordionPanelChildren, NoAttribut
 
         super.init();
     }
-
-    @Override
-    public Set<String> moduleImports()
-    {
-        Set<String> strings = INgComponent.super.moduleImports();
-        strings.add("MatExpansionModule");
-        return strings;
-    }
-
 
 }

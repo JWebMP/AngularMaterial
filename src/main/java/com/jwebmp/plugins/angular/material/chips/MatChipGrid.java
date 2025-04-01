@@ -2,6 +2,7 @@ package com.jwebmp.plugins.angular.material.chips;
 
 import com.google.common.base.Strings;
 import com.jwebmp.core.Component;
+import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.services.interfaces.INgComponent;
 import com.jwebmp.core.base.angular.components.NgFor;
@@ -19,22 +20,15 @@ import java.util.Set;
 @NgImportReference(value = "MatChipInput", reference = "@angular/material/chips")
 @Getter
 @Setter
+@NgImportModule("MatChipGrid")
+@NgImportModule("MatChipInput")
 public class MatChipGrid extends Component<GlobalChildren, NoAttributes, GlobalFeatures, GlobalEvents<?>, MatChipGrid> implements
-                                                                                                                       INgComponent<MatChipGrid>,
-                                                                                                                       MatFormFieldChildren
+        INgComponent<MatChipGrid>,
+        MatFormFieldChildren
 {
     private String variableName;
 
     private MatChipRow rowTemplate = new MatChipRow();
-
-    @Override
-    public Set<String> moduleImports()
-    {
-        Set<String> strings = INgComponent.super.moduleImports();
-        strings.add("MatChipGrid");
-        strings.add("MatChipInput");
-        return strings;
-    }
 
     public MatChipGrid()
     {

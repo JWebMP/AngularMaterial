@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.guicedee.client.IGuiceContext;
 import com.jwebmp.core.base.angular.client.annotations.boot.NgBootModuleImport;
 import com.jwebmp.core.base.angular.client.annotations.components.NgInput;
+import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.annotations.structures.NgMethod;
 import com.jwebmp.core.base.angular.client.services.interfaces.INgComponent;
@@ -47,6 +48,8 @@ import static com.guicedee.guicedinjection.interfaces.ObjectBinderKeys.JSONObjec
         	}""")
 
 @NgInput("paginator")
+@NgImportModule("MatTableModule")
+@NgImportModule("MatSortModule")
 public class MatTable<J extends MatTable<J>> extends Table<J> implements INgComponent<J>
 {
     private String dataSource;
@@ -66,16 +69,6 @@ public class MatTable<J extends MatTable<J>> extends Table<J> implements INgComp
     }
 
     @Override
-    public Set<String> moduleImports()
-    {
-        Set<String> strings = INgComponent.super.moduleImports();
-        strings.add("MatTableModule");
-        //strings.add("MatPaginatorModule");
-        strings.add("MatSortModule");
-        return strings;
-    }
-
-    @Override
     public List<String> fields()
     {
         List<String> fields = INgComponent.super.fields();
@@ -83,12 +76,12 @@ public class MatTable<J extends MatTable<J>> extends Table<J> implements INgComp
         {
             String rendered = null;
             if (IGuiceContext.getContext()
-                             .isBuildingInjector())
+                    .isBuildingInjector())
             {
                 try
                 {
                     rendered = new ObjectMapper().writeValueAsString(columnOrder)
-                                                 .replace("\r\n", "\n");
+                            .replace("\r\n", "\n");
                 }
                 catch (JsonProcessingException e)
                 {
@@ -128,15 +121,15 @@ public class MatTable<J extends MatTable<J>> extends Table<J> implements INgComp
         if (sortEnabled)
         {
             strings.add("""
-                                if (this.dataSource && this.sort)
-                                                this.dataSource.sort = this.sort!;""");
+                    if (this.dataSource && this.sort)
+                                    this.dataSource.sort = this.sort!;""");
         }
 
         if (paginateEnabled)
         {
             strings.add("""
-                                if (this.dataSource && this.paginator)
-                                                this.dataSource.paginator = this.paginator!;""");
+                    if (this.dataSource && this.paginator)
+                                    this.dataSource.paginator = this.paginator!;""");
         }
         return strings;
     }

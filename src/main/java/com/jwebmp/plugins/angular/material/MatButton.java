@@ -1,6 +1,7 @@
 package com.jwebmp.plugins.angular.material;
 
 import com.google.common.base.Strings;
+import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.services.interfaces.INgComponent;
 import com.jwebmp.core.base.html.DivSimple;
@@ -8,6 +9,7 @@ import com.jwebmp.core.base.html.DivSimple;
 import java.util.Set;
 
 @NgImportReference(value = "MatButtonModule", reference = "@angular/material/button")
+@NgImportModule("MatButtonModule")
 public class MatButton extends DivSimple<MatButton> implements INgComponent<MatButton>
 {
     public MatButton()
@@ -15,15 +17,7 @@ public class MatButton extends DivSimple<MatButton> implements INgComponent<MatB
         setTag("button");
         addAttribute("mat-button", "");
     }
-
-    @Override
-    public Set<String> moduleImports()
-    {
-        Set<String> strings = INgComponent.super.moduleImports();
-        strings.add("MatButtonModule");
-        return strings;
-    }
-
+    
     public MatButton setAsLink(String href, String target)
     {
         setTag("a");

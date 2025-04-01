@@ -1,5 +1,6 @@
 package com.jwebmp.plugins.angular.material.accordion;
 
+import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.annotations.structures.NgField;
 import com.jwebmp.core.base.angular.client.services.interfaces.INgComponent;
@@ -19,8 +20,10 @@ import java.util.Set;
 @NgImportReference(value = "viewChild", reference = "@angular/core")
 @NgField("accordion = viewChild.required(MatAccordion)")
 @NgImportReference(value = "MatExpansionModule", reference = "@angular/material/expansion")
+@NgImportModule("MatAccordion")
+@NgImportModule("MatExpansionModule")
 public class MatAccordion extends Div<MatAccordionChildren, NoAttributes, GlobalFeatures, GlobalEvents, MatAccordion> implements
-                                                                                                                      INgComponent<MatAccordion>
+        INgComponent<MatAccordion>
 {
     private MatAccordionTogglePosition togglePosition;
     private MatAccordionDisplayMode displayMode;
@@ -54,16 +57,7 @@ public class MatAccordion extends Div<MatAccordionChildren, NoAttributes, Global
         }
         super.init();
     }
-
-    @Override
-    public Set<String> moduleImports()
-    {
-        Set<String> strings = INgComponent.super.moduleImports();
-        strings.add("MatAccordion");
-        strings.add("MatExpansionModule");
-        return strings;
-    }
-
+    
     @Override
     public Boolean standaloneOverride()
     {

@@ -2,6 +2,7 @@ package com.jwebmp.plugins.angular.material.dialog;
 
 import com.google.common.base.Strings;
 import com.jwebmp.core.base.angular.client.annotations.constructors.NgConstructorParameter;
+import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.annotations.structures.NgMethod;
 import com.jwebmp.core.base.angular.client.services.interfaces.AnnotationUtils;
@@ -44,6 +45,8 @@ import static com.jwebmp.core.base.angular.client.services.interfaces.Annotation
 
 @NgImportReference(value = "MatDialogTitle", reference = "@angular/material/dialog")
 @NgImportReference(value = "MatDialogContent", reference = "@angular/material/dialog")
+@NgImportModule("MatDialogModule")
+@NgImportModule("MatDialogTitle")
 public class MatDialog extends DivSimple<MatDialog> implements INgComponent<MatDialog>
 {
     private H1<?> title;
@@ -73,33 +76,6 @@ public class MatDialog extends DivSimple<MatDialog> implements INgComponent<MatD
     public Boolean standaloneOverride()
     {
         return true;
-    }
-
-    @Override
-    public Set<String> moduleImports()
-    {
-        Set<String> strings = INgComponent.super.moduleImports();
-        strings.add("MatDialogTitle");
-        strings.add("MatDialogContent");
-        return strings;
-    }
-
-    @Override
-    public List<String> providers()
-    {
-        List<String> providers = INgComponent.super.providers();
-     /*   providers.add("{\n" +
-                              "       provide: MatDialogRef,\n" +
-                              "       useValue: {}\n" +
-                              "     }");
-
-        providers.add("{\n" +
-                              "       provide: MAT_DIALOG_DATA,\n" +
-                              "       useValue: {}\n" +
-                              "     }");
-*/
-
-        return providers;
     }
 
     private static final String openMethodString = """

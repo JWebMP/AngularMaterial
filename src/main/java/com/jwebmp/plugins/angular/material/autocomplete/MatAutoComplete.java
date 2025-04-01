@@ -1,5 +1,6 @@
 package com.jwebmp.plugins.angular.material.autocomplete;
 
+import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.services.interfaces.IComponent;
 import com.jwebmp.core.base.angular.client.services.interfaces.INgComponent;
@@ -22,10 +23,11 @@ import static com.jwebmp.core.base.angular.client.services.interfaces.Annotation
 @NgImportReference(value = "ENTER", reference = "@angular/cdk/keycodes")
 @NgImportReference(value = "MatAutocomplete", reference = "@angular/material/autocomplete")
 @NgImportReference(value = "MatAutocompleteSelectedEvent", reference = "@angular/material/autocomplete")
+@NgImportModule("MatAutocomplete")
 @Getter
 @Setter
 public class MatAutoComplete extends DivSimple<MatAutoComplete> implements INgComponent<MatAutoComplete>,
-                                                                           MatFormFieldChildren
+        MatFormFieldChildren
 {
     private MatOption optionTemplate = new MatOption();
     private NgFor ngFor = new NgFor();
@@ -37,14 +39,6 @@ public class MatAutoComplete extends DivSimple<MatAutoComplete> implements INgCo
     public MatAutoComplete()
     {
         setTag("mat-autocomplete");
-    }
-
-    @Override
-    public Set<String> moduleImports()
-    {
-        var s = INgComponent.super.moduleImports();
-        s.add("MatAutocomplete");
-        return s;
     }
 
     public MatAutoComplete(String name)
@@ -66,9 +60,9 @@ public class MatAutoComplete extends DivSimple<MatAutoComplete> implements INgCo
         {
             ngFor.add(optionTemplate);
             ngFor.setVariableName("element")
-                 .setList(dataProvider.getAnnotation()
-                                      .referenceName() + "." + dataProvider.getAnnotation()
-                                                                           .variableName());
+                    .setList(dataProvider.getAnnotation()
+                            .referenceName() + "." + dataProvider.getAnnotation()
+                            .variableName());
             ngFor.setTrackBy("$index");
             add(ngFor);
 

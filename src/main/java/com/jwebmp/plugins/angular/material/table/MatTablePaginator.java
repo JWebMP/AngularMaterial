@@ -2,6 +2,7 @@ package com.jwebmp.plugins.angular.material.table;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.guicedee.services.jsonrepresentation.IJsonRepresentation;
+import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.services.interfaces.INgComponent;
 import com.jwebmp.core.base.html.DivSimple;
@@ -15,20 +16,12 @@ import java.util.Set;
 @Getter
 @Setter
 @NgImportReference(value = "MatPaginator", reference = "@angular/material/paginator")
+@NgImportModule("MatPaginator")
 public class MatTablePaginator extends DivSimple<MatTablePaginator> implements TableChildren,
-                                                                               INgComponent<MatTablePaginator>
+        INgComponent<MatTablePaginator>
 {
     private List<Integer> pageSizeOptions;
     private Boolean showFirstLastButtons;
-
-    @Override
-    public Set<String> moduleImports()
-    {
-        Set<String> strings = INgComponent.super.moduleImports();
-        strings.add("MatPaginator");
-        return strings;
-    }
-
 
     public MatTablePaginator()
     {
@@ -43,7 +36,7 @@ public class MatTablePaginator extends DivSimple<MatTablePaginator> implements T
             try
             {
                 addAttribute("[pageSizeOptions]", IJsonRepresentation.getObjectMapper()
-                                                                     .writeValueAsString(pageSizeOptions));
+                        .writeValueAsString(pageSizeOptions));
             }
             catch (JsonProcessingException e)
             {

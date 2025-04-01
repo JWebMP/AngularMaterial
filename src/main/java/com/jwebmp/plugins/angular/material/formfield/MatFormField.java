@@ -1,5 +1,6 @@
 package com.jwebmp.plugins.angular.material.formfield;
 
+import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.services.interfaces.INgComponent;
 import com.jwebmp.core.base.html.Div;
@@ -22,9 +23,12 @@ import java.util.Set;
 @NgImportReference(value = "MatLabel", reference = "@angular/material/form-field")
 @NgImportReference(value = "MatInput", reference = "@angular/material/input")
 @NgImportReference(value = "FormsModule", reference = "@angular/forms")
-
+@NgImportModule("MatFormField")
+@NgImportModule("MatLabel")
+@NgImportModule("MatInput")
+@NgImportModule("FormsModule")
 public class MatFormField extends Div<MatFormFieldChildren, NoAttributes, GlobalFeatures, GlobalEvents, MatFormField> implements
-                                                                                                                      INgComponent<MatFormField>
+        INgComponent<MatFormField>
 {
     private boolean outline;
 
@@ -37,17 +41,6 @@ public class MatFormField extends Div<MatFormFieldChildren, NoAttributes, Global
     public MatFormField()
     {
         setTag("mat-form-field");
-    }
-
-    @Override
-    public Set<String> moduleImports()
-    {
-        Set<String> strings = INgComponent.super.moduleImports();
-        strings.add("MatFormField");
-        strings.add("MatLabel");
-        strings.add("MatInput");
-        strings.add("FormsModule");
-        return strings;
     }
 
     @Override
@@ -67,7 +60,7 @@ public class MatFormField extends Div<MatFormFieldChildren, NoAttributes, Global
             {
                 IComponentHierarchyBase<?, ?> suffixs = (IComponentHierarchyBase<?, ?>) suffix;
                 suffixs.asAttributeBase()
-                       .addAttribute("matSuffix", "");
+                        .addAttribute("matSuffix", "");
                 add(suffix);
             }
         }

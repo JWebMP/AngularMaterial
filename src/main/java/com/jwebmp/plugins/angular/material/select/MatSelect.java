@@ -1,5 +1,6 @@
 package com.jwebmp.plugins.angular.material.select;
 
+import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.services.interfaces.INgComponent;
 import com.jwebmp.core.base.html.Div;
@@ -16,10 +17,11 @@ import java.util.Set;
 @NgImportReference(value = "MatSelectModule", reference = "@angular/material/select")
 @Getter
 @Setter
+@NgImportModule("MatSelectModule")
 public class MatSelect extends Div<MatSelectChildren, NoAttributes, GlobalFeatures, GlobalEvents, MatSelect> implements
-                                                                                                             INgComponent<MatSelect>,
-                                                                                                             MatFormFieldChildren,
-                                                                                                             MatInputType
+        INgComponent<MatSelect>,
+        MatFormFieldChildren,
+        MatInputType
 {
     private Boolean disableOptionCentering;
     private Boolean disableRipple;
@@ -85,15 +87,7 @@ public class MatSelect extends Div<MatSelectChildren, NoAttributes, GlobalFeatur
         }
         super.init();
     }
-
-    @Override
-    public Set<String> moduleImports()
-    {
-        Set<String> strings = INgComponent.super.moduleImports();
-        strings.add("MatSelectModule");
-        return strings;
-    }
-
+    
     @Override
     public MatSelect bind(String variableName)
     {

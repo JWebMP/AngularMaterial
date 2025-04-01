@@ -1,5 +1,6 @@
 package com.jwebmp.plugins.angular.material.checkbox;
 
+import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.services.interfaces.INgComponent;
 import com.jwebmp.core.base.html.DivSimple;
@@ -14,8 +15,10 @@ import java.util.Set;
 @NgImportReference(value = "MatCheckboxChange", reference = "@angular/material/checkbox")
 @Getter
 @Setter
+@NgImportModule("MatCheckboxModule")
 public class MatCheckbox extends DivSimple<MatCheckbox> implements INgComponent<MatCheckbox>, MatFormFieldChildren,
-        MatInputType {
+        MatInputType
+{
     private Boolean checked;
     private String color;
     private Boolean disableRipple;
@@ -26,54 +29,59 @@ public class MatCheckbox extends DivSimple<MatCheckbox> implements INgComponent<
     private String value;
 
     @Override
-    public MatCheckbox bind(String variableName) {
+    public MatCheckbox bind(String variableName)
+    {
         super.bind(variableName);
         addAttribute("[checked]", variableName);
         return this;
     }
 
-    public MatCheckbox() {
+    public MatCheckbox()
+    {
         setTag("mat-checkbox");
     }
 
     @Override
-    protected void init() {
-        if (checked != null) {
+    protected void init()
+    {
+        if (checked != null)
+        {
             addAttribute("checked", checked + "");
         }
-        if (color != null) {
+        if (color != null)
+        {
             addAttribute("color", color);
         }
-        if (disableRipple != null) {
+        if (disableRipple != null)
+        {
             addAttribute("disableRipple", disableRipple + "");
         }
-        if (indeterminate != null) {
+        if (indeterminate != null)
+        {
             addAttribute("indeterminate", indeterminate + "");
         }
-        if (labelPosition != null) {
+        if (labelPosition != null)
+        {
             addAttribute("labelPosition", labelPosition + "");
         }
-        if (name != null) {
+        if (name != null)
+        {
             addAttribute("name", name);
         }
-        if (required != null) {
+        if (required != null)
+        {
             addAttribute("required", required + "");
         }
-        if (value != null) {
+        if (value != null)
+        {
             addAttribute("value", value);
         }
         super.init();
     }
 
     @Override
-    public Set<String> moduleImports() {
-        Set<String> strings = INgComponent.super.moduleImports();
-        strings.add("MatCheckboxModule");
-        return strings;
-    }
-
-    @Override
-    public Boolean standaloneOverride() {
+    public Boolean standaloneOverride()
+    {
         return true;
     }
 }

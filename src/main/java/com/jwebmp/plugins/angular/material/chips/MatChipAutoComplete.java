@@ -1,5 +1,6 @@
 package com.jwebmp.plugins.angular.material.chips;
 
+import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.annotations.structures.NgMethod;
 import com.jwebmp.core.base.html.Button;
@@ -55,6 +56,7 @@ import static com.jwebmp.core.base.angular.client.services.interfaces.Annotation
                 event.option.deselect();
             }
         """)
+@NgImportModule("MatAutocompleteTrigger")
 public class MatChipAutoComplete extends MatFormField
 {
     private MatLabel label;
@@ -62,26 +64,17 @@ public class MatChipAutoComplete extends MatFormField
     private MatInput<?> input;
     private MatAutoComplete autoComplete;
 
-    @Override
-    public Set<String> moduleImports()
-    {
-        Set<String> strings = super.moduleImports();
-        strings.add("MatAutocompleteTrigger");
-        return strings;
-    }
-
-
     public MatChipAutoComplete()
     {
         grid = new MatChipGrid();
         grid.getRowTemplate()
-            .addAttribute("(removed)", "remove(element)");
+                .addAttribute("(removed)", "remove(element)");
         Button removeButton = new Button<>();
         removeButton.addAttribute("matChipRemove", "");
         removeButton.addAttribute("[attr.aria-label]", "'remove ' + element");
         removeButton.add(new MatIcon().setIcon("cancel"));
         grid.getRowTemplate()
-            .add(removeButton);
+                .add(removeButton);
     }
 
     @Override
@@ -120,11 +113,11 @@ public class MatChipAutoComplete extends MatFormField
                 addConfiguration(getNgField("readonly selectedItem = model({} as any);"));
                 addConfiguration(getNgField("readonly selected = signal([] as any);"));
                 addConfiguration(getNgField("readonly filtered = computed(() => {\n" +
-                                                    "\t\tconst current = this.selectedItem();\n" +
-                                                    "\t\treturn current\n" +
-                                                    "\t\t\t? this.staffList.staff.filter(item => item.id !==current.id)\n" +
-                                                    "\t\t\t: this.staffList.staff.slice();\n" +
-                                                    "\t});"));
+                        "\t\tconst current = this.selectedItem();\n" +
+                        "\t\treturn current\n" +
+                        "\t\t\t? this.staffList.staff.filter(item => item.id !==current.id)\n" +
+                        "\t\t\t: this.staffList.staff.slice();\n" +
+                        "\t});"));
 
                 input.addAttribute("[matAutocomplete]", autoComplete.getName());
                 input.addAttribute("(matChipInputTokenEnd)", "add($event)");

@@ -1,5 +1,6 @@
 package com.jwebmp.plugins.angular.material;
 
+import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
 import com.jwebmp.core.base.angular.client.services.interfaces.INgComponent;
 import com.jwebmp.core.base.html.DivSimple;
@@ -13,6 +14,7 @@ import java.util.Set;
 @Setter
 @Accessors(chain = true)
 @NgImportReference(value = "MatIconModule", reference = "@angular/material/icon")
+@NgImportModule("MatIconModule")
 public class MatIcon extends DivSimple<MatIcon> implements INgComponent<MatIcon>
 {
     private String icon;
@@ -28,13 +30,4 @@ public class MatIcon extends DivSimple<MatIcon> implements INgComponent<MatIcon>
         setText(icon);
         super.init();
     }
-
-    @Override
-    public Set<String> moduleImports()
-    {
-        Set<String> strings = INgComponent.super.moduleImports();
-        strings.add("MatIconModule");
-        return strings;
-    }
-
 }
