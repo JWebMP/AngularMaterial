@@ -50,6 +50,7 @@ import static com.jwebmp.core.base.angular.client.services.interfaces.Annotation
 public class MatDialog<J extends MatDialog<J>> extends DivSimple<J> implements INgComponent<J>
 {
     private H1<?> title;
+    private MatDialogHeader header;
     private MatDialogContent content;
     private MatDialogActions footer;
 
@@ -61,6 +62,10 @@ public class MatDialog<J extends MatDialog<J>> extends DivSimple<J> implements I
             title.addAttribute("mat-dialog-title", "");
             add(title);
         }
+        if (header != null)
+        {
+            add(header);
+        }
         if (content != null)
         {
             add(content);
@@ -70,6 +75,42 @@ public class MatDialog<J extends MatDialog<J>> extends DivSimple<J> implements I
             add(footer);
         }
         super.init();
+    }
+
+    public MatDialogHeader getHeader()
+    {
+        if (header == null)
+        {
+            header = new MatDialogHeader();
+        }
+        return header;
+    }
+
+    public MatDialogContent getContent()
+    {
+        if (content == null)
+        {
+            content = new MatDialogContent();
+        }
+        return content;
+    }
+
+    public MatDialogActions getFooter()
+    {
+        if (footer == null)
+        {
+            footer = new MatDialogActions();
+        }
+        return footer;
+    }
+
+    public H1<?> getTitle()
+    {
+        if (title == null)
+        {
+            title = new H1<>();
+        }
+        return title;
     }
 
     @Override
