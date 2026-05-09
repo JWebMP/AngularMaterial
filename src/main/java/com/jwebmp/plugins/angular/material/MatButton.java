@@ -10,7 +10,7 @@ import java.util.Set;
 
 @NgImportReference(value = "MatButtonModule", reference = "@angular/material/button")
 @NgImportModule("MatButtonModule")
-public class MatButton extends DivSimple<MatButton> implements INgComponent<MatButton>
+public class MatButton<J extends MatButton<J>> extends DivSimple<J> implements INgComponent<J>
 {
     public MatButton()
     {
@@ -18,7 +18,8 @@ public class MatButton extends DivSimple<MatButton> implements INgComponent<MatB
         addAttribute("mat-button", "");
     }
     
-    public MatButton setAsLink(String href, String target)
+    @SuppressWarnings("unchecked")
+    public J setAsLink(String href, String target)
     {
         setTag("a");
         if (!Strings.isNullOrEmpty(href))
@@ -29,54 +30,61 @@ public class MatButton extends DivSimple<MatButton> implements INgComponent<MatB
         {
             addAttribute("target", target);
         }
-        return this;
+        return (J) this;
     }
 
-    public MatButton setRaised()
+    @SuppressWarnings("unchecked")
+    public J setRaised()
     {
         removeAttribute("mat-button");
         addAttribute("mat-raised-button", "");
-        return this;
+        return (J) this;
     }
 
-    public MatButton setFlat()
+    @SuppressWarnings("unchecked")
+    public J setFlat()
     {
         removeAttribute("mat-button");
         addAttribute("mat-flat-button", "");
-        return this;
+        return (J) this;
     }
 
-    public MatButton setStroked()
+    @SuppressWarnings("unchecked")
+    public J setStroked()
     {
         removeAttribute("mat-button");
         addAttribute("mat-stroked-button", "");
-        return this;
+        return (J) this;
     }
 
-    public MatButton setIcon()
+    @SuppressWarnings("unchecked")
+    public J setIcon()
     {
         removeAttribute("mat-button");
         addAttribute("mat-icon-button", "");
-        return this;
+        return (J) this;
     }
 
-    public MatButton setFab()
+    @SuppressWarnings("unchecked")
+    public J setFab()
     {
         removeAttribute("mat-button");
         addAttribute("mat-fab", "");
-        return this;
+        return (J) this;
     }
 
-    public MatButton setMiniFab()
+    @SuppressWarnings("unchecked")
+    public J setMiniFab()
     {
         removeAttribute("mat-button");
         addAttribute("mat-mini-fab", "");
-        return this;
+        return (J) this;
     }
 
-    public MatButton addIcon(String text)
+    @SuppressWarnings("unchecked")
+    public J addIcon(String text)
     {
-        add(new MatIcon().setIcon(text));
-        return this;
+        add(new MatIcon<>().setIcon(text));
+        return (J) this;
     }
 }

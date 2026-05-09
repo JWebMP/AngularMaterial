@@ -71,7 +71,7 @@ public class MatAutoComplete extends DivSimple<MatAutoComplete> implements INgCo
             if (this.dataProvider != null)
             {
                 addConfiguration(getNgComponentReference((Class<? extends IComponent<?>>) dataProvider.getClass()));
-                addConfiguration(getNgField("readonly separatorKeysCodes: number[] = " + separatorKeyCodes.toString() + ";"));
+                addConfiguration(getNgField("readonly separatorKeysCodes: number[] = " + separatorKeyCodes.toString() + ";", false, true));
 
                 ;//ngFor.setVariableName("")
             }

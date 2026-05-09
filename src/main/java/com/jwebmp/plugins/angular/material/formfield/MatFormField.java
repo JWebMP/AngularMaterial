@@ -11,14 +11,12 @@ import com.jwebmp.core.base.interfaces.IComponentHierarchyBase;
 import com.jwebmp.plugins.angular.material.forms.MatInputType;
 import com.jwebmp.plugins.angular.material.forms.MatLabel;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 @Getter
-@Setter
 @NgImportReference(value = "MatFormField", reference = "@angular/material/form-field")
 @NgImportReference(value = "MatLabel", reference = "@angular/material/form-field")
 @NgImportReference(value = "MatInput", reference = "@angular/material/input")
@@ -27,8 +25,8 @@ import java.util.Set;
 @NgImportModule("MatLabel")
 @NgImportModule("MatInput")
 @NgImportModule("FormsModule")
-public class MatFormField extends Div<MatFormFieldChildren, NoAttributes, GlobalFeatures, GlobalEvents, MatFormField> implements
-        INgComponent<MatFormField>
+public class MatFormField<J extends MatFormField<J>> extends Div<MatFormFieldChildren, NoAttributes, GlobalFeatures, GlobalEvents, J> implements
+        INgComponent<J>
 {
     private boolean outline;
 
@@ -79,33 +77,59 @@ public class MatFormField extends Div<MatFormFieldChildren, NoAttributes, Global
         super.init();
     }
 
-    public MatFormField addSuffix(MatFormFieldChildren component)
+    @SuppressWarnings("unchecked")
+    public J addSuffix(MatFormFieldChildren component)
     {
         suffixes.add(component);
-        return this;
+        return (J) this;
     }
 
-    public MatFormField setLabel(String label)
+    @SuppressWarnings("unchecked")
+    public J setLabel(String label)
     {
         this.label = new MatLabel(label);
-        return this;
+        return (J) this;
     }
 
-    public MatFormField setLabel(MatLabel label)
+    @SuppressWarnings("unchecked")
+    public J setLabel(MatLabel label)
     {
         this.label = label;
-        return this;
+        return (J) this;
     }
 
-    public MatFormField setHint(String hint)
+    @SuppressWarnings("unchecked")
+    public J setHint(String hint)
     {
         this.hint = new MatHint().setText(hint);
-        return this;
+        return (J) this;
     }
 
-    public MatFormField setHint(MatHint hint)
+    @SuppressWarnings("unchecked")
+    public J setHint(MatHint hint)
     {
         this.hint = hint;
-        return this;
+        return (J) this;
+    }
+
+    @SuppressWarnings("unchecked")
+    public J setOutline(boolean outline)
+    {
+        this.outline = outline;
+        return (J) this;
+    }
+
+    @SuppressWarnings("unchecked")
+    public J setInput(MatInputType input)
+    {
+        this.input = input;
+        return (J) this;
+    }
+
+    @SuppressWarnings("unchecked")
+    public J setSuffixes(List<MatFormFieldChildren> suffixes)
+    {
+        this.suffixes = suffixes;
+        return (J) this;
     }
 }

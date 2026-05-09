@@ -17,7 +17,6 @@ import java.util.Set;
 import static com.jwebmp.core.base.angular.client.services.interfaces.AnnotationUtils.getNgField;
 
 @Getter
-@Setter
 @NgImportReference(value = "MatAutocompleteTrigger", reference = "@angular/material/autocomplete")
 @NgImportReference(value = "MatChipInputEvent", reference = "@angular/material/chips")
 @NgImportReference(value = "signal", reference = "@angular/core")
@@ -57,7 +56,7 @@ import static com.jwebmp.core.base.angular.client.services.interfaces.Annotation
             }
         """)
 @NgImportModule("MatAutocompleteTrigger")
-public class MatChipAutoComplete extends MatFormField
+public class MatChipAutoComplete<J extends MatChipAutoComplete<J>> extends MatFormField<J>
 {
     private MatLabel label;
     private MatChipGrid grid;
@@ -109,15 +108,15 @@ public class MatChipAutoComplete extends MatFormField
             if (input != null && autoComplete != null)
             {
 
-                //addConfiguration(getNgField(" readonly selectedItems = signal(this.staffTimesheetCreateData.timesheet.staffIds);"));
-                addConfiguration(getNgField("readonly selectedItem = model({} as any);"));
-                addConfiguration(getNgField("readonly selected = signal([] as any);"));
+                //addConfiguration(getNgField(" readonly selectedItems = signal(this.staffTimesheetCreateData.timesheet.staffIds);", false, true));
+                addConfiguration(getNgField("readonly selectedItem = model({} as any);", false, true));
+                addConfiguration(getNgField("readonly selected = signal([] as any);", false, true));
                 addConfiguration(getNgField("readonly filtered = computed(() => {\n" +
                         "\t\tconst current = this.selectedItem();\n" +
                         "\t\treturn current\n" +
                         "\t\t\t? this.staffList.staff.filter(item => item.id !==current.id)\n" +
                         "\t\t\t: this.staffList.staff.slice();\n" +
-                        "\t});"));
+                        "\t});", false, true));
 
                 input.addAttribute("[matAutocomplete]", autoComplete.getName());
                 input.addAttribute("(matChipInputTokenEnd)", "add($event)");

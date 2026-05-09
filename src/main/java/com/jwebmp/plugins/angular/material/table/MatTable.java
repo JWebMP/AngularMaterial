@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static com.guicedee.guicedinjection.interfaces.ObjectBinderKeys.JSONObjectWriter;
+import static com.guicedee.client.implementations.ObjectBinderKeys.JSONObjectWriter;
 
 @NgImportReference(value = "MatTableModule", reference = "@angular/material/table")
 @NgImportReference(value = "MatTable", reference = "@angular/material/table")
@@ -31,7 +31,6 @@ import static com.guicedee.guicedinjection.interfaces.ObjectBinderKeys.JSONObjec
 @NgImportReference(value = "MatTableDataSource", reference = "@angular/material/table")
 @NgImportReference(value = "ViewChild", reference = "@angular/core")
 @Getter
-@Setter
 @Accessors(chain = true)
 
 @NgMethod("""
@@ -66,6 +65,62 @@ public class MatTable<J extends MatTable<J>> extends Table<J> implements INgComp
     public MatTable()
     {
         addAttribute("mat-table", "");
+    }
+
+    @SuppressWarnings("unchecked")
+    public J setDataSource(String dataSource)
+    {
+        this.dataSource = dataSource;
+        return (J) this;
+    }
+
+    @SuppressWarnings("unchecked")
+    public J setColumns(List<MatTableColumn> columns)
+    {
+        this.columns = columns;
+        return (J) this;
+    }
+
+    @SuppressWarnings("unchecked")
+    public J setColumnOrder(List<String> columnOrder)
+    {
+        this.columnOrder = columnOrder;
+        return (J) this;
+    }
+
+    @SuppressWarnings("unchecked")
+    public J setHeaderRow(MatTableHeaderRow headerRow)
+    {
+        this.headerRow = headerRow;
+        return (J) this;
+    }
+
+    @SuppressWarnings("unchecked")
+    public J setTableRow(MatTableRow tableRow)
+    {
+        this.tableRow = tableRow;
+        return (J) this;
+    }
+
+    @SuppressWarnings("unchecked")
+    public J setPaginator(MatTablePaginator paginator)
+    {
+        this.paginator = paginator;
+        return (J) this;
+    }
+
+    @SuppressWarnings("unchecked")
+    public J setSortEnabled(boolean sortEnabled)
+    {
+        this.sortEnabled = sortEnabled;
+        return (J) this;
+    }
+
+    @SuppressWarnings("unchecked")
+    public J setPaginateEnabled(boolean paginateEnabled)
+    {
+        this.paginateEnabled = paginateEnabled;
+        return (J) this;
     }
 
     @Override
@@ -171,11 +226,12 @@ public class MatTable<J extends MatTable<J>> extends Table<J> implements INgComp
      * @param column
      * @return this
      */
-    public MatTable addColumn(MatTableColumn column)
+    @SuppressWarnings("unchecked")
+    public J addColumn(MatTableColumn column)
     {
         columns.add(column);
         columnOrder.add(column.getColumnDef());
-        return this;
+        return (J) this;
     }
 
 }

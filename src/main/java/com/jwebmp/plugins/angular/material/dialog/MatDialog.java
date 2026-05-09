@@ -139,7 +139,7 @@ public class MatDialog<J extends MatDialog<J>> extends DivSimple<J> implements I
         if (Strings.isNullOrEmpty(assignResultString))
         {
             format = String.format(openMethodString, getTsFilename(getClass()), width, height, Strings.isNullOrEmpty(dataBinding) ? "{}" : dataBinding, "");
-            component.addConfiguration(AnnotationUtils.getNgMethod(format));
+            component.addConfiguration(AnnotationUtils.getNgMethod(format, false, true));
         }
         else
         {
@@ -151,8 +151,8 @@ public class MatDialog<J extends MatDialog<J>> extends DivSimple<J> implements I
         {
             component.addConfiguration(AnnotationUtils.getNgImportReference("MatDialogModule", "@angular/material/dialog"));
             component.addConfiguration(AnnotationUtils.getNgImportModule("MatDialogModule"));
-            component.addConfiguration(AnnotationUtils.getNgConstructorParameter("public dialog:MatDialog"));
-            component.addConfiguration(AnnotationUtils.getNgMethod(format));
+            component.addConfiguration(AnnotationUtils.getNgConstructorParameter("public dialog:MatDialog", false, true, true));
+            component.addConfiguration(AnnotationUtils.getNgMethod(format, false, true));
         }
         return format;
     }

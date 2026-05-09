@@ -10,16 +10,14 @@ import com.jwebmp.core.base.html.interfaces.events.GlobalEvents;
 import com.jwebmp.plugins.angular.material.formfield.MatFormFieldChildren;
 import com.jwebmp.plugins.angular.material.forms.MatInputType;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.Set;
 
 @NgImportReference(value = "MatSelectModule", reference = "@angular/material/select")
 @Getter
-@Setter
 @NgImportModule("MatSelectModule")
-public class MatSelect extends Div<MatSelectChildren, NoAttributes, GlobalFeatures, GlobalEvents, MatSelect> implements
-        INgComponent<MatSelect>,
+public class MatSelect<J extends MatSelect<J>> extends Div<MatSelectChildren, NoAttributes, GlobalFeatures, GlobalEvents, J> implements
+        INgComponent<J>,
         MatFormFieldChildren,
         MatInputType
 {
@@ -45,6 +43,29 @@ public class MatSelect extends Div<MatSelectChildren, NoAttributes, GlobalFeatur
         this();
         setName(name);
     }
+
+    @SuppressWarnings("unchecked")
+    public J setDisableOptionCentering(Boolean disableOptionCentering) { this.disableOptionCentering = disableOptionCentering; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setDisableRipple(Boolean disableRipple) { this.disableRipple = disableRipple; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setDisabled(Boolean disabled) { this.disabled = disabled; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setErrorStateMatcher(String errorStateMatcher) { this.errorStateMatcher = errorStateMatcher; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setHideSingleSelectionIndicator(Boolean hideSingleSelectionIndicator) { this.hideSingleSelectionIndicator = hideSingleSelectionIndicator; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setMultiple(Boolean multiple) { this.multiple = multiple; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setPanelWidth(String panelWidth) { this.panelWidth = panelWidth; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setPlaceHolder(String placeHolder) { this.placeHolder = placeHolder; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setRequired(Boolean required) { this.required = required; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setFocused(Boolean focused) { this.focused = focused; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setName(String name) { this.name = name; return (J) this; }
 
     @Override
     protected void init()
@@ -89,10 +110,11 @@ public class MatSelect extends Div<MatSelectChildren, NoAttributes, GlobalFeatur
     }
     
     @Override
-    public MatSelect bind(String variableName)
+    @SuppressWarnings("unchecked")
+    public J bind(String variableName)
     {
         addAttribute("[(value)]", variableName);
-        return this;
+        return (J) this;
     }
 
     @Override

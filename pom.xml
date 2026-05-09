@@ -24,19 +24,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.jwebmp.core</groupId>
+            <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-core</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp.plugins</groupId>
             <artifactId>angular</artifactId>
-        </dependency>
-
-
-        <dependency>
-            <groupId>com.jwebmp.plugins</groupId>
-            <artifactId>angular-forms</artifactId>
         </dependency>
 
         <dependency>
@@ -51,7 +45,7 @@
 
         <dependency>
             <groupId>com.guicedee</groupId>
-            <artifactId>guice-injection</artifactId>
+            <artifactId>inject</artifactId>
         </dependency>
 
         <dependency>
@@ -82,7 +76,7 @@
                 <artifactId>jwebmp-bom</artifactId>
                 <type>pom</type>
                 <scope>import</scope>
-                <version>${guicedee.version}</version>
+                <version>${jwebmp.version}</version>
             </dependency>
 
         </dependencies>

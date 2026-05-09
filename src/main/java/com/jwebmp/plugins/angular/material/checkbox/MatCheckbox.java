@@ -7,16 +7,12 @@ import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.plugins.angular.material.formfield.MatFormFieldChildren;
 import com.jwebmp.plugins.angular.material.forms.MatInputType;
 import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Set;
 
 @NgImportReference(value = "MatCheckboxModule", reference = "@angular/material/checkbox")
 @NgImportReference(value = "MatCheckboxChange", reference = "@angular/material/checkbox")
 @Getter
-@Setter
 @NgImportModule("MatCheckboxModule")
-public class MatCheckbox extends DivSimple<MatCheckbox> implements INgComponent<MatCheckbox>, MatFormFieldChildren,
+public class MatCheckbox<J extends MatCheckbox<J>> extends DivSimple<J> implements INgComponent<J>, MatFormFieldChildren,
         MatInputType
 {
     private Boolean checked;
@@ -28,18 +24,36 @@ public class MatCheckbox extends DivSimple<MatCheckbox> implements INgComponent<
     private Boolean required;
     private String value;
 
-    @Override
-    public MatCheckbox bind(String variableName)
-    {
-        super.bind(variableName);
-        addAttribute("[checked]", variableName);
-        return this;
-    }
-
     public MatCheckbox()
     {
         setTag("mat-checkbox");
     }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public J bind(String variableName)
+    {
+        super.bind(variableName);
+        addAttribute("[checked]", variableName);
+        return (J) this;
+    }
+
+    @SuppressWarnings("unchecked")
+    public J setChecked(Boolean checked) { this.checked = checked; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setColor(String color) { this.color = color; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setDisableRipple(Boolean disableRipple) { this.disableRipple = disableRipple; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setIndeterminate(Boolean indeterminate) { this.indeterminate = indeterminate; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setLabelPosition(MatCheckboxLabelPosition labelPosition) { this.labelPosition = labelPosition; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setName(String name) { this.name = name; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setRequired(Boolean required) { this.required = required; return (J) this; }
+    @SuppressWarnings("unchecked")
+    public J setValue(String value) { this.value = value; return (J) this; }
 
     @Override
     protected void init()

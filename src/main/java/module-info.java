@@ -1,4 +1,4 @@
-import com.guicedee.guicedinjection.interfaces.IGuiceScanModuleInclusions;
+import com.guicedee.client.services.config.IGuiceScanModuleInclusions;
 import com.jwebmp.plugins.angular.material.implementations.AngularMaterialScanModule;
 
 module com.jwebmp.plugins.angular.material {
@@ -19,6 +19,7 @@ module com.jwebmp.plugins.angular.material {
     requires static lombok;
     requires com.jwebmp.client;
     requires com.jwebmp.core.angular;
+    requires com.guicedee.client;
 
     provides IGuiceScanModuleInclusions with AngularMaterialScanModule;
     //provides IPageConfigurator with AngularMaterialPageConfigurator;
