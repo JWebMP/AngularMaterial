@@ -20,6 +20,7 @@
 
     <properties>
         <ignore.moditect>true</ignore.moditect>
+        <project.scm.nameUrl>/JWebMP/AngularMaterial</project.scm.nameUrl>
     </properties>
 
     <dependencies>
@@ -57,9 +58,7 @@
         </dependency>
 
     </dependencies>
-    <scm>
-        <url>https://github.com/GedMarc/JWebMP-AngularJS.git</url>
-    </scm>
+
 
     <dependencyManagement>
         <dependencies>
