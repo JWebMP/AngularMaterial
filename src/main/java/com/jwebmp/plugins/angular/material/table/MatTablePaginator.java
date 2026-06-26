@@ -1,6 +1,6 @@
 package com.jwebmp.plugins.angular.material.table;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 import com.guicedee.modules.services.jsonrepresentation.IJsonRepresentation;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportModule;
 import com.jwebmp.core.base.angular.client.annotations.references.NgImportReference;
@@ -51,7 +51,7 @@ public class MatTablePaginator<J extends MatTablePaginator<J>> extends DivSimple
                 addAttribute("[pageSizeOptions]", IJsonRepresentation.getObjectMapper()
                         .writeValueAsString(pageSizeOptions));
             }
-            catch (JsonProcessingException e)
+            catch (JacksonException e)
             {
                 throw new RuntimeException(e);
             }

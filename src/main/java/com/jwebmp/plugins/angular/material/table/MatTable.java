@@ -1,8 +1,8 @@
 package com.jwebmp.plugins.angular.material.table;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectWriter;
 import com.guicedee.client.IGuiceContext;
 import com.jwebmp.core.base.angular.client.annotations.boot.NgBootModuleImport;
 import com.jwebmp.core.base.angular.client.annotations.components.NgInput;
@@ -138,7 +138,7 @@ public class MatTable<J extends MatTable<J>> extends Table<J> implements INgComp
                     rendered = new ObjectMapper().writeValueAsString(columnOrder)
                             .replace("\r\n", "\n");
                 }
-                catch (JsonProcessingException e)
+                catch (JacksonException e)
                 {
                     throw new RuntimeException(e);
                 }
@@ -150,7 +150,7 @@ public class MatTable<J extends MatTable<J>> extends Table<J> implements INgComp
                 {
                     rendered = writer.writeValueAsString(columnOrder);
                 }
-                catch (JsonProcessingException e)
+                catch (JacksonException e)
                 {
                     throw new RuntimeException(e);
                 }

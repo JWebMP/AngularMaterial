@@ -24,16 +24,16 @@ module com.jwebmp.plugins.angular.material {
     provides IGuiceScanModuleInclusions with AngularMaterialScanModule;
     //provides IPageConfigurator with AngularMaterialPageConfigurator;
 
-    opens com.jwebmp.plugins.angular.material to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
-    opens com.jwebmp.plugins.angular.material.implementations to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
-    opens com.jwebmp.plugins.angular.material.dialog to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
-    opens com.jwebmp.plugins.angular.material.formfield to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
-    opens com.jwebmp.plugins.angular.material.forms to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
-    opens com.jwebmp.plugins.angular.material.table to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
-    opens com.jwebmp.plugins.angular.material.accordion to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
-    opens com.jwebmp.plugins.angular.material.select to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
-    opens com.jwebmp.plugins.angular.material.checkbox to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
-    opens com.jwebmp.plugins.angular.material.chips to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
-    opens com.jwebmp.plugins.angular.material.autocomplete to com.google.guice, com.jwebmp.core, com.fasterxml.jackson.databind;
+    opens com.jwebmp.plugins.angular.material to com.google.guice, com.jwebmp.core, tools.jackson.databind;
+    opens com.jwebmp.plugins.angular.material.implementations to com.google.guice, com.jwebmp.core, tools.jackson.databind;
+    opens com.jwebmp.plugins.angular.material.dialog to com.google.guice, com.jwebmp.core, tools.jackson.databind;
+    opens com.jwebmp.plugins.angular.material.formfield to com.google.guice, com.jwebmp.core, tools.jackson.databind;
+    opens com.jwebmp.plugins.angular.material.forms to com.google.guice, com.jwebmp.core, tools.jackson.databind;
+    opens com.jwebmp.plugins.angular.material.table to com.google.guice, com.jwebmp.core, tools.jackson.databind;
+    opens com.jwebmp.plugins.angular.material.accordion to com.google.guice, com.jwebmp.core, tools.jackson.databind;
+    opens com.jwebmp.plugins.angular.material.select to com.google.guice, com.jwebmp.core, tools.jackson.databind;
+    opens com.jwebmp.plugins.angular.material.checkbox to com.google.guice, com.jwebmp.core, tools.jackson.databind;
+    opens com.jwebmp.plugins.angular.material.chips to com.google.guice, com.jwebmp.core, tools.jackson.databind;
+    opens com.jwebmp.plugins.angular.material.autocomplete to com.google.guice, com.jwebmp.core, tools.jackson.databind;
 
 }
